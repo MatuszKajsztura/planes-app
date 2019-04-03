@@ -1,0 +1,36 @@
+:host {
+  cursor: pointer;
+}
+
+.card-container {
+  margin: 20px;
+}
+
+.card-content {
+  padding: 15px;
+  position: relative;
+  font-size: 26px;
+  font-weight: 900;
+  color: lightcoral;
+}
+
+.icon-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%; // wyśrodkowanie elementu względem wyższego
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-50%); // wyśrodkowanie elementu względem wyższego
+  background: white;
+}
+
+.time {
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+}
