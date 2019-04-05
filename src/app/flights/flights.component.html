@@ -2,6 +2,7 @@
   <div
     class="col-4"
     *ngFor="let flight of flights$ | async"
+    (click)="openBasicFlightsDetails(flight)"
   >
     <app-flight [flight]="flight"></app-flight>
   </div>

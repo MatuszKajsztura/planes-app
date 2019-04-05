@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>
+  <span>Basic Info</span>
+  <mat-icon class="float-right" (click)="closeModal()">close</mat-icon>
+</h2>
+<mat-dialog-content>
+  <p>{{ flight.origin }} - {{ flight.destination }}</p>
+  <p>Flight crew</p>
+  <ul>
+    <li *ngFor="let member of flight.crew">{{ member.name }}</li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary">Edit</button>
+</mat-dialog-actions>

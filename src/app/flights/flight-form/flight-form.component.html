@@ -6,7 +6,13 @@
           formControlName="code"
           matInput
           placeholder="Code"
+          #code
         >
+        <mat-error *ngIf="form.get('code').hasError('required')">Code is required</mat-error>
+        <mat-error *ngIf="form.get('code').hasError('minlength')">Minimum length is 3 chars</mat-error>
+        <mat-error *ngIf="form.get('code').hasError('maxlength')">Maximum length is 7 chars</mat-error>
+        <mat-hint [align]="end"> {{ code.value.length  }}/7</mat-hint>
+        <!-- mat hint -use reference #code to get code control value-->
       </mat-form-field>
     </div>
   </div>

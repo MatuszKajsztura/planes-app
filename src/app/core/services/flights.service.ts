@@ -17,7 +17,7 @@ export class FlightsService {
   }
 
   public getFlights(): Observable<Flight[]> {
-      return this.db.list<any>(this.API_URL).snapshotChanges()
+      return this.db.list<Flight>(this.API_URL).snapshotChanges()
         .pipe(
           map((response) => response.map((flight) => this.assignKey(flight))),
           map((flights) => flights.map((flight: any) => {
@@ -44,5 +44,9 @@ export class FlightsService {
       ...flight.payload.val(),
       key: flight.key
     };
+  }
+
+  public createFight(flight: Flight) {
+    return this.db.list<Flight>(this.API_URL).push(flight);
   }
 }

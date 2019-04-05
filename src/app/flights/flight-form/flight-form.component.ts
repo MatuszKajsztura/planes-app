@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { Crew } from 'src/app/models/crew.model';
 
 @Component({
@@ -31,7 +31,6 @@ export class FlightFormComponent implements OnInit {
   }
 
   public get crew() {
-    console.log(this.form.get('crew') as FormArray, ' a normalnie:' + this.form.get('crew'))
     return this.form.get('crew') as FormArray;
   }
 
@@ -45,12 +44,12 @@ export class FlightFormComponent implements OnInit {
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
-      code: '',
-      origin: '',
-      destination: '',
-      departureTime: '',
-      returnTime: '',
-      additionalInformation: '',
+      code: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(8)]],
+      origin: ['', [Validators.required]],
+      destination: ['', [Validators.required]],
+      departureTime: ['', [Validators.required]],
+      returnTime: ['', [Validators.required]],
+      additionalInformation: ['', [Validators.required]],
       withDiscount: false,
       crew: this.formBuilder.array([this.buildCrewMember()]),
     });

@@ -1,12 +1,19 @@
 <h2 mat-dialog-title>New Flight Form</h2>
 <mat-dialog-content>
-  <app-flight-form></app-flight-form>
+  <app-flight-form #flightFormRef></app-flight-form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <div class="row w-100">
     <div class="col-sm-12">
       <button mat-raised-button mat-dialog-close>Cancel</button>
-      <button class="float-right" mat-raised-button color="primary">Create</button>
+      <button
+        [disabled]="flightForm.form.invalid"
+        class="float-right"
+        mat-raised-button color="primary"
+        (click)="addFlight()"
+      >
+        Create
+      </button>
     </div>
   </div>
 </mat-dialog-actions>
