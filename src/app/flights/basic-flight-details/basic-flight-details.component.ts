@@ -11,9 +11,9 @@ export class BasicFlightDetailsComponent {
   public flight: Flight;
   constructor(
     private dialogRef: MatDialogRef<BasicFlightDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: Flight,
+    @Inject(MAT_DIALOG_DATA) private data: Flight, // get data from parent-creator component
   ) {
-    this.flight = data;
+    this.flight = data; // get data from parent-creator component
   }
 
   public closeModal() {

@@ -25,7 +25,7 @@ export class FlightsComponent {
   }
 
   public openBasicFlightsDetails(flight: Flight) {
-    this.dialog.open(BasicFlightDetailsComponent, { data: flight} );
+    this.dialog.open(BasicFlightDetailsComponent, { data: flight} ); // emit flight to dynamic component
   }
 
 }
