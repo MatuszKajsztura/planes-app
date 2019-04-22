@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { Crew } from 'src/app/models/crew.model';
+import { Flight } from 'src/app/models/flight.model';
 
 @Component({
   selector: 'app-flight-form',
@@ -8,10 +9,11 @@ import { Crew } from 'src/app/models/crew.model';
   styleUrls: ['./flight-form.component.scss']
 })
 export class FlightFormComponent implements OnInit {
-  form: FormGroup;
+  public form: FormGroup;
+  @Input() public isEditMode: boolean = false;
   public readonly jobs: any[] = [
-    { value: 'pilot', label: 'Pilot' },
-    { value: 'steward', label: 'Steward' },
+    { value: 'co_pilot', label: 'Pilot' },
+    { value: 'senior_cabin_crew', label: 'Steward' },
     { value: 'mechanic', label: 'Mechanic' },
   ];
 
@@ -23,19 +25,25 @@ export class FlightFormComponent implements OnInit {
     this.buildForm();
   }
 
-  public buildCrewMember() {
+  public buildCrewMember(crewMember: Crew = {} as Crew) {
     return this.formBuilder.group({
-      name: '',
-      job: '',
+      name: crewMember.name || '',
+      job: crewMember.job || '',
     });
+  }
+
+  public setFlight(flight: Flight) {
+    const { key, ...formData } = flight;
+    this.form.patchValue(formData);
+    formData.crew.forEach(crewMember => this.addCrewMember(crewMember))
   }
 
   public get crew() {
     return this.form.get('crew') as FormArray;
   }
 
-  public addCrewMember() {
-    this.crew.push(this.buildCrewMember());
+  public addCrewMember(crewMember?) {
+    this.crew.push(this.buildCrewMember(crewMember));
   }
 
   public removeCrewMember(i: number) {
@@ -51,7 +59,7 @@ export class FlightFormComponent implements OnInit {
       returnTime: ['', [Validators.required]],
       additionalInformation: ['', [Validators.required]],
       withDiscount: false,
-      crew: this.formBuilder.array([this.buildCrewMember()]),
+      crew: this.formBuilder.array(this.isEditMode ? [] : [this.buildCrewMember()]),
     });
   }
 

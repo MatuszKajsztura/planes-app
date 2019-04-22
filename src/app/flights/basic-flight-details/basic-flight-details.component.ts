@@ -1,6 +1,7 @@
 import { Component, Inject, Optional } from '@angular/core';
 import { Flight } from 'src/app/models/flight.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basic-flight-details',
@@ -10,6 +11,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class BasicFlightDetailsComponent {
   public flight: Flight;
   constructor(
+    private router: Router,
     private dialogRef: MatDialogRef<BasicFlightDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) private data: Flight, // get data from parent-creator component
   ) {
@@ -18,6 +20,11 @@ export class BasicFlightDetailsComponent {
 
   public closeModal() {
     this.dialogRef.close();
+  }
+
+  public goToEditFlight(key) {
+    this.closeModal();
+    this.router.navigate(['/dashboard/flights/'+key])
   }
 
 }

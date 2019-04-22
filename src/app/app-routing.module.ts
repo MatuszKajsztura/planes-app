@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './core/login/login.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { FlightsComponent } from './flights/flights.component';
+import { EditFlightComponent } from './flights/edit-flight/edit-flight.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,10 @@ const routes: Routes = [
       {
         path: 'flights',
         component: FlightsComponent,
-
+      },
+      {
+        path: 'flights/:key',
+        component: EditFlightComponent,
       }
     ]
   }
