@@ -1,2 +1,21 @@
-<h3>Edit flight {{ flight?.code }}</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <button
+                mat-raised-button color="accent"
+                (click)="save()"
+                class="float-right mt-5"
+            >
+                Save
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Edit flight {{ flight?.code }}</h3>
+        </div>
+    </div>
+</div>
 <app-flight-form #flightForm isEditMode=true></app-flight-form>

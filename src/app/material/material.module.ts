@@ -41,6 +41,7 @@ const MAT_SNACKBAR_CONFIG: MatSnackBarConfig = { // snackbar config
   horizontalPosition: 'right',
   verticalPosition: 'top',
   panelClass: 'toast',
+  duration: 3000,
 };
 
 @NgModule({

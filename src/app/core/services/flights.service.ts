@@ -68,5 +68,9 @@ export class FlightsService {
           )
         )
       );
-    } 
+  }
+  
+  public updateFlight(key: string, flight: Flight): Promise<void> {
+    return this.db.object<Flight>(`${this.API_URL}/${key}`).update(flight);
+  }
 }
