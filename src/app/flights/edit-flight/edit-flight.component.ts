@@ -22,13 +22,12 @@ export class EditFlightComponent implements AfterViewInit {
     private toast: MatSnackBar,
     private router: Router,
   ) { }
-  
+
   ngAfterViewInit(): void {
     this.loadFlight();
   }
 
   public save() {
-    console.log(this.flightForm.form.value, 888);
     this.flightService.updateFlight(this.flight.key, this.flightForm.form.value)
       .then(
         () => {
@@ -40,10 +39,10 @@ export class EditFlightComponent implements AfterViewInit {
         }
       );
   }
-  
+
   private loadFlight() {
     const key = this.route.snapshot.params['key'];
-  
+
     this.flightService.getFlight(key)
     .pipe(
       tap(flight => this.flight = flight)
@@ -52,7 +51,7 @@ export class EditFlightComponent implements AfterViewInit {
       (flight: Flight) => {
         this.flightForm.setFlight(flight);
       }
-    )
+    );
 
   }
 
