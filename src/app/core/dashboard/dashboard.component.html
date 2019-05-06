@@ -5,8 +5,8 @@
       routerLink="/dashboard"
       class="logo"
     >
-    <mat-icon class="logout-icon float-right">power_settings_new</mat-icon>
-    <span class="float-right">Hello Mati</span>
+    <mat-icon class="logout-icon float-right" (click)="logout()">power_settings_new</mat-icon>
+    <span class="float-right">Hello {{ user.email }}</span>
   </div>
 </mat-toolbar>
 <div class="container">

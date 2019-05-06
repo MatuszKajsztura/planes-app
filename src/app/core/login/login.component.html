@@ -8,8 +8,8 @@
           <mat-form-field>
             <input
               matInput
-              placeholder="Username"
-              [(ngModel)]="username"
+              placeholder="Email"
+              [(ngModel)]="credentials.email"
             >
           </mat-form-field>
         </div>
@@ -18,7 +18,7 @@
             <input
               matInput
               placeholder="Password"
-              [(ngModel)]="password"
+              [(ngModel)]="credentials.password"
             >
           </mat-form-field>
         </div>
@@ -28,7 +28,7 @@
     <mat-card-actions>
       <div class="row text-center">
         <div class="col-sm-12">
-          <button mat-raised-button color="primary">LOGIN</button>
+          <button mat-raised-button color="primary" (click)="login()">LOGIN</button>
         </div>
       </div>
       <div class="text-center">or</div>
