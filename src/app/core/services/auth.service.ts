@@ -6,7 +6,7 @@ import { UserInfo } from 'firebase';
   providedIn: 'root'
 })
 export class AuthService {
-  private userData: UserInfo;
+  public readonly authState$ = this.fireAuth.authState;
 
   constructor(
     private fireAuth: AngularFireAuth,
@@ -14,19 +14,18 @@ export class AuthService {
 
   public login(credentials: { email: string, password: string}) {
     return this.fireAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
-      .then((userCredentials) => this.userData = userCredentials.user);
+  }
+
+  public register(credentials: { email: string, password: string } ) {
+    return this.fireAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password);
   }
 
   public get user() {
-    return this.userData;
+    return this.fireAuth.auth.currentUser;
   }
 
   public logout() {
-    this.userData = null;
     return this.fireAuth.auth.signOut();
   }
 
-  public isLoggedIn() {
-    return !!this.userData;
-  }
 }

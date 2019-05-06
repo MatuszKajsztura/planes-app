@@ -27,6 +27,11 @@ export class LoginComponent {
       .then(this.onLoginSucces.bind(this), this.onLoginFailure.bind(this));
   }
 
+  public register() {
+    this.authService.register(this.credentials)
+      .then(() => this.toast.open('User created, please log in.', '', { panelClass: 'toast-success'}))
+      .catch((error: HttpErrorResponse) => this.toast.open(error.message, '', { panelClass: 'toast-error'}))
+  }
   private onLoginSucces(data) {
     this.router.navigate(['/dashboard']);
     this.toast.open('User has been loged in', '', { panelClass: 'toast-success'});

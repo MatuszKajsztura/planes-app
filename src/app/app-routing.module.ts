@@ -6,6 +6,7 @@ import { DashboardComponent } from './core/dashboard/dashboard.component';
 import { FlightsComponent } from './flights/flights.component';
 import { EditFlightComponent } from './flights/edit-flight/edit-flight.component';
 import { AuthGuard } from './core/services/auth.guard';
+import { LoginGuard } from './core/services/login.guard';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'dashboard',
