@@ -22,7 +22,6 @@ import { FlightsModule } from './flights/flights.module';
     BrowserAnimationsModule,
     CoreModule,
     MaterialModule,
-    FlightsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

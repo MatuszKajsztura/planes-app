@@ -31,11 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'flights',
-        component: FlightsComponent,
-      },
-      {
-        path: 'flights/:key',
-        component: EditFlightComponent,
+        loadChildren: './flights/flights.module#FlightsModule',
       }
     ]
   }
