@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl, Validators } from '@angular/forms';
 import { Crew } from 'src/app/models/crew.model';
 import { Flight } from 'src/app/models/flight.model';
+import { SKPrefixValidator } from './prefix.validator';
 
 @Component({
   selector: 'app-flight-form',
@@ -52,7 +53,7 @@ export class FlightFormComponent implements OnInit {
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
-      code: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(8)]],
+      code: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(8), SKPrefixValidator]],
       origin: ['', [Validators.required]],
       destination: ['', [Validators.required]],
       departureTime: ['', [Validators.required]],
