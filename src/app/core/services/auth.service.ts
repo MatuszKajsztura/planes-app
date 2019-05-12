@@ -3,6 +3,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { UserInfo, User } from 'firebase';
 import { Observable } from 'rxjs';
 
+export interface Credentials {
+  email: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,11 +22,11 @@ export class AuthService {
     return this.fireAuth.auth.currentUser;
   }
 
-  public login(credentials: { email: string, password: string}) {
+  public login(credentials: Credentials) {
     return this.fireAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
   }
 
-  public register(credentials: { email: string, password: string } ) {
+  public register(credentials: Credentials ) {
     return this.fireAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password);
   }
 

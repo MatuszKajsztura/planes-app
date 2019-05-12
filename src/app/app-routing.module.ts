@@ -34,6 +34,10 @@ const routes: Routes = [
         loadChildren: './flights/flights.module#FlightsModule',
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 
